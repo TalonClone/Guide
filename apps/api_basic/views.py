@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .models import Article
 from .serializers import ArticleSerializer
+from django.http import Http404
 
 
 class ArticleAPIView(APIView):
@@ -24,28 +25,30 @@ class ArticleAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def article_detail(request, pk):
-    try:
-        article = Article.objects.get(pk=pk)
+class ArticleDetailsAPIView(APIView):
 
-    except Article.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    def get_object(self, pk):
+        try:
+            return Article.objects.get(pk=pk)
 
-    if request.method == 'GET':
+        except Article.DoesNotExist:
+            #return Response(status=status.HTTP_404_NOT_FOUND)
+            raise Http404
+
+    def get(self, request, pk):
+        article = self.get_object(pk)
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        serializer = ArticleSerializer(data=request.data)
+    def put(self, request, pk):
+        article = self.get_object(pk)
+        serializer = ArticleSerializer(article, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
+    def delete(self, request, pk):
+        article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
