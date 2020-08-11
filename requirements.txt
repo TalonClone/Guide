@@ -9,6 +9,7 @@ djangorestframework==3.11.1
 filelock==3.0.12
 jsmin==2.2.2
 Markdown==3.2.2
+Pillow==7.2.0
 psycopg2==2.8.5
 pytz==2020.1
 six==1.15.0
