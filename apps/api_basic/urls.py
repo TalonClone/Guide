@@ -5,9 +5,9 @@ from .views import ArticleList, ArticleDetail
 app_name = 'apps.api_basic'
 
 urlpatterns = [
-    path('article/', ArticleList.as_view()),
-    path('article/<int:pk>', ArticleDetail.as_view()),
+    path('api_basic/article/', ArticleList.as_view()),
+    path('api_basic/article/<int:pk>', ArticleDetail.as_view()),
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+#urlpatterns = format_suffix_patterns(urlpatterns)
 
