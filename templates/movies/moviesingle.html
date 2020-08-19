@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <!-- //Meta tag Keywords -->
-    <title>Clack Website Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- //Meta tag Keywords -->
-    <!-- Custom-Files -->
-    <link rel="stylesheet" href="./bundles/css/bootstrap.css">
-    <!-- Bootstrap-Core-CSS -->
-    <!--/ Style-CSS -->
-    <link rel="stylesheet" href="./bundles/css/style.css" type="text/css" media="all">
-    <!--// Style-CSS -->
-    <!-- font-awesome-icons -->
-    <link href="./bundles/css/font-awesome.css" rel="stylesheet">
-    <!-- //font-awesome-icons -->
-    <!-- /Fonts -->
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700"
-          rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900"
-          rel="stylesheet">
-    <!-- //Fonts -->
-</head>
+{% extends 'movies/base.html' %}
+{% load static %}
 
-<body>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block meat %}
 <div id="page" class="page">
     <div class="main-banner inner bg bg1" id="home">
         <!-- header -->
@@ -256,7 +262,7 @@
                             Последние добавленные</h3>
                         <div class="special-sec1 row mt-3 editContent">
                             <div class="img-deals col-md-4">
-                                <img src="bundles/images/s4.jpg" class="img-fluid" alt="">
+                                <img src="{% static 'movies/images/s4.jpg' %}" class="img-fluid" alt="">
                             </div>
                             <div class="img-deal1 col-md-4">
                                 <h3 class="editContent">Рэмбо: Последняя кровь</h3>
@@ -268,7 +274,7 @@
                         <div class="special-sec1 row mt-3 editContent"
                              style="outline: none; cursor: inherit;">
                             <div class="img-deals col-md-4">
-                                <img src="bundles/images/s2.jpg" class="img-fluid" alt=""
+                                <img src="{% static 'movies/images/s2.jpg' %}" class="img-fluid" alt=""
                                      style="outline: none; cursor: inherit;">
                             </div>
                             <div class="img-deal1 col-md-8">
@@ -282,7 +288,7 @@
                         <div class="special-sec1 row mt-3 editContent"
                              style="outline: none; cursor: inherit;">
                             <div class="img-deals col-md-4">
-                                <img src="bundles/images/s1.jpg" class="img-fluid" alt=""
+                                <img src="{% static 'movies/images/s1.jpg' %}" class="img-fluid" alt=""
                                      style="outline: none; cursor: inherit;">
                             </div>
                             <div class="img-deal1 col-md-8">
@@ -296,7 +302,7 @@
                         <div class="special-sec1 row mt-3 editContent"
                              style="outline: none; cursor: inherit;">
                             <div class="img-deals col-md-4">
-                                <img src="bundles/images/s5.jpg" class="img-fluid" alt=""
+                                <img src="{% static 'movies/images/s5.jpg' %}" class="img-fluid" alt=""
                                      style="outline: none; cursor: inherit;">
                             </div>
                             <div class="img-deal1 col-md-8">
@@ -310,7 +316,7 @@
                         <div class="special-sec1 row mt-3 editContent"
                              style="outline: none; cursor: inherit;">
                             <div class="img-deals col-md-4">
-                                <img src="bundles/images/s3.jpg" class="img-fluid" alt=""
+                                <img src="{% static 'movies/images/s3.jpg' %}" class="img-fluid" alt=""
                                      style="outline: none; cursor: inherit;">
                             </div>
                             <div class="img-deal1 col-md-8">
@@ -331,32 +337,43 @@
                 <div class="left-ads-display col-lg-8">
                     <div class="row">
                         <div class="desc1-left col-md-6">
-                            <img src="bundles/images/images.jpeg" class="img-fluid" alt="">
+                            <img src="{{ movie.poster.url }}" class="img-fluid" alt="">
                         </div>
                         <div class="desc1-right col-md-6 pl-lg-4">
-                            <h3 class="editContent" style="outline: none; cursor: inherit;">
-                                ТЕРМИНАТОР: ТЕМНЫЕ СУДЬБЫ</h3>
-                            <h5 class="editContent">Terminator: Dark Fate</h5>
+                            <h3 class="editContent" style="outline: none; cursor: inherit;">{{ movie.title }}</h3>
+                            <h5 class="editContent"></h5>
                             <ul>
-                                <li style="list-style: none"><span><b>Год:</b> 2019</span></li>
-                                <li style="list-style: none"><span><b>Страна:</b> США, Китай</span>
+                                <li style="list-style: none"><span><b>Год:</b>{{ movie.year }}</span></li>
+                                <li style="list-style: none"><span><b>Страна:</b> {{ movie.country }}</span>
                                 </li>
-                                <li style="list-style: none"><span><b>Слоган:</b> «Welcome to the Day after Judgment Day»</span>
-                                </li>
-                                <li style="list-style: none">
-                                    <span><b>Режиссер:</b> Тим Миллер</span></li>
-                                <li style="list-style: none"><span><b>Актеры:</b> Арнольд Шварценеггер, Маккензи Дэвис,
-                                    Эдвард Ферлонг, Линда Хэмилтон, Том Хоппер, Кассандра Старр, Гэбриел Луна,
-                                    Наталия Рейес, Стивен Кри, Диего Бонета</span></li>
-                                <li style="list-style: none"><span><b>Жанр:</b> фантастика, боевик, приключения</span>
-                                </li>
-                                <li style="list-style: none"><span><b>Премьера в мире:</b> 23 октября 2019</span>
+                                <li style="list-style: none"><span><b>Слоган:</b> {{ movie.tagline }}</span>
                                 </li>
                                 <li style="list-style: none">
-                                    <span><b>Бюджет:</b> $185 000 000</span></li>
+                                    <span><b>Режиссер:</b>
+                                        {% for director in movie.directors.all %}
+                                            {{ director.name }}
+                                        {% endfor %}
+                                    </span></li>
                                 <li style="list-style: none">
-                                    <span><b>Сборы в США:</b> $61 150 256</span></li>
-                                <li style="list-style: none"><span><b>Сборы в мире:</b> $250 369 693</span>
+                                    <span><b>Актеры:</b>
+                                        {% for actor in movie.actors.all %}
+                                            {{ actor.name }}
+                                        {% endfor %}
+                                    </span></li>
+                                <li style="list-style: none">
+                                    <span><b>Жанр:</b>
+                                        {% for actor in movie.genres.all %}
+                                            {{ actor.name }}
+                                        {% endfor %}
+                                    </span>
+                                </li>
+                                <li style="list-style: none"><span><b>Премьера в мире:</b> {{ movie.world_premiere }}</span>
+                                </li>
+                                <li style="list-style: none">
+                                    <span><b>Бюджет:</b> {{ movie.budget }}</span></li>
+                                <li style="list-style: none">
+                                    <span><b>Сборы в США:</b> {{ movie.fees_in_usa }}</span></li>
+                                <li style="list-style: none"><span><b>Сборы в мире:</b> {{ movie.fees_in_world }}</span>
                                 </li>
                                 <li style="list-style: none">
                                     <a href="#"><b>Рейтинг:</b>
@@ -410,21 +427,13 @@
                     <div class="row sub-para-w3layouts mt-5">
 
                         <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
-                            О фильме Терминатор: Темные судьбы</h3>
+                            О фильме {{ movie.title }}</h3>
                         <p>
-                            <img src="bundles/images/about.jpg" class="img-fluid" alt="">
-                            <img src="bundles/images/admin.jpg" class="img-fluid" alt="">
-                            <img src="bundles/images/d1.jpg" class="img-fluid" alt="">
+                            <img src="{% static 'movies/images/about.jpg' %}" class="img-fluid" alt="">
+                            <img src="{% static 'movies/images/admin.jpg' %}" class="img-fluid" alt="">
+                            <img src="{% static 'movies/images/d1.jpg' %}" class="img-fluid" alt="">
                         </p>
-                        <p class="editContent" style="outline: none; cursor: inherit;">Сара Коннор
-                            превратилась в настоящую охотницу
-                            за терминаторами и теперь занимается уничтожением роботов-убийц из
-                            будущего.
-                            Она считала, что главное — это не дать им добраться до Джона, но теперь
-                            появилась
-                            Дани Рамос, от выживания которой также зависит судьба человечества.
-                            Вместе с ней в бой вступает и загадочная Грейс, смесь человека и
-                            машины.</p>
+                        <p class="editContent" style="outline: none; cursor: inherit;">{{ movie.description }}</p>
                         <p class="mt-3 italic-blue editContent"
                            style="outline: none; cursor: inherit;">
                             <iframe width="560" height="315"
@@ -436,12 +445,6 @@
                             </iframe>
                         </p>
                         <p class="mt-3 editContent" style="outline: none; cursor: inherit;">
-                            Человечество дорого заплатило за технический прогресс, поставив под
-                            угрозу свое выживание.
-                            Пришло время покончить с войной между машинами и людьми.
-                            Научно-фантастический боевик,
-                            заключительная часть трилогии, перезапускающей франшизу «Терминатора»
-                            Джеймса Кэмерона.
                         </p>
                     </div>
                     <hr>
@@ -488,7 +491,7 @@
                             <!--  //contact form grid ends here -->
                         </div>
                         <div class="media py-5">
-                            <img src="bundles/images/te2.jpg" class="mr-3 img-fluid" alt="image"
+                            <img src="{% static 'movies/images/te2.jpg' %}" class="mr-3 img-fluid" alt="image"
                                  style="outline: none; cursor: inherit;">
                             <div class="media-body mt-4">
                                 <h5 class="mt-0 editContent"
@@ -501,7 +504,7 @@
                                 <div class="media mt-5 editContent"
                                      style="outline: none; cursor: inherit;">
                                     <a class="pr-3" href="#">
-                                        <img src="bundles/images/te1.jpg" class="img-fluid "
+                                        <img src="{% static 'movies/images/te1.jpg' %}" class="img-fluid "
                                              alt="image" style="outline: none; cursor: inherit;">
                                     </a>
                                     <div class="media-body">
@@ -684,4 +687,4 @@
         </div>
     </div>
 </div>
-</body>
+{% endblock %}

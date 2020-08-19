@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from datetime import date
 
 
@@ -53,8 +54,9 @@ class Movie(models.Model):
     poster = models.ImageField("Постер", upload_to="movies/movies/")
     year = models.PositiveSmallIntegerField("Дата выхода", default=2019)
     country = models.CharField("Страна", max_length=30)
-    directors = models.ManyToManyField(Actor, verbose_name="актёры", related_name="film_director")
-    actors = models.ManyToManyField(Genre, verbose_name="жанры")
+    directors = models.ManyToManyField(Actor, verbose_name="режиссёры", related_name="film_director")
+    actors = models.ManyToManyField(Actor, verbose_name="актёры", related_name="film_actor")
+    genres = models.ManyToManyField(Genre, verbose_name="жанры")
     world_premiere = models.DateField("Премьера в мире", default=date.today)
     budget = models.PositiveIntegerField("Бюджет", default=0, help_text="указывать сумму в долларах США")
     fees_in_usa = models.PositiveIntegerField(
@@ -67,6 +69,9 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("apps.movies:movie_detail", kwargs={"slug": self.url})
 
     class Meta:
         verbose_name = "Фильм"
